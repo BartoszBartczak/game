@@ -1,0 +1,7 @@
+<app-question
+  *ngIf="questions"
+  [question]="currentQuestion"
+  [answers]="currentQuestionAnswers"
+  [questionIndex]="currentQuestionIndex"
+  (answer)="handleQuestionAnswer($event)"
+></app-question>

@@ -1,0 +1,45 @@
+<div>
+  <h2>New game</h2>
+  <mat-divider class="divider"></mat-divider>
+  <form [formGroup]="newGameOptions" (ngSubmit)="startGame()">
+    <div class="form-fields">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Amount</mat-label>
+        <mat-select formControlName="amount">
+          <mat-option *ngFor="let val of amount; index as i" [value]="i + 1">
+            {{ i + 1 }} questions
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Difficulty</mat-label>
+        <mat-select formControlName="difficulty">
+          <mat-option
+            *ngFor="let difficulty of difficulties"
+            [value]="difficulty"
+          >
+            {{ difficulty | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="newGameOptions.invalid"
+      type="submit"
+    >
+      Start new game
+    </button>
+  </form>
+</div>
